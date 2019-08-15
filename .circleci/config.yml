@@ -9,6 +9,6 @@ orbs:
 workflows:
   test:
     jobs:
-      - whitesource-scan/scan:
-          context: WhiteSource
-          api_key: 52ed27e27ad547728036f915595c625787967c58e702401eb96800bfa1f9444c
+      - scan:
+          directory: ./
+       
