@@ -1,14 +1,12 @@
 # Java Maven CircleCI 2.1 configuration file
-#
+##
 
 version: 2.1
 
 orbs:
-  whitesource-scan: whitesource/whitesource-scan@18.10.2
-
+  vulnerability-checker: whitesource/vulnerability-checker@19.7.2
+  
 workflows:
-  test:
-    jobs:
-      - scan:
-          directory: ./
-       
+ test:
+   jobs:
+      - vulnerability-checker/scan
