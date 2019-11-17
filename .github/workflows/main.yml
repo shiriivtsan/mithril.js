@@ -1,0 +1,21 @@
+on: registry_package
+name: shiri_test
+jobs:
+  gpSecurityJob:
+    name: GP Security Check Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: GP Security Check Step
+        id: gp-security-check
+        uses: whitesource/GpSecurityAction@19.10.2
+        with:
+          gp-token: 9f0ef3684ed0360596d2cbf6afb3297f374c7c45
+          ws-api-key: 52ed27e27ad547728036f915595c625787967c58e702401eb96800bfa1f9444c
+          ws-user-key: e07c57c625b74a1b98e34f53ceab64e20f5d66144d9e4034b0aee7511980ba95
+          ws-product-key: e07c57c625b74a1b98e34f53ceab64e20f5d66144d9e4034b0aee7511980ba95
+          ws-destination-url: https://saas.whitesourcesoftware.com/agent
+      - name: Upload Report
+        uses: actions/upload-artifact@master
+        with:
+          name: security-scan-log
+          path: ${{ steps.gp-security-check.outputs.scan-report-folder-path }}
