@@ -1,22 +1,12 @@
 jobs:
-  upload-artifact:
+  build:
     docker:
-      - image: circleci/openjdk:8-jdk
-    working_directory: ~/repo
+      - image: 'circleci/node:10'
     steps:
       - checkout
-      - run: mvn dependency:go-offline
-      - run:
-          name: maven build
-          command: |
-            mvn clean install
-      - run:
-          name: Install jFrog CLI
-          command: curl -fL https://getcli.jfrog.io | sh
-      - run:
-          name: Push to Artifactory
-          command: |
-            ./jfrog rt config --url $ARTIFACTORY_URL --user wlo --apikey AKCp5ek8AXXM6jGSNXrmSEyCdf7Mhu6XZ7kc5gFcv6JozJ1xJVL9HjGVtBX1TAUYaMFpNxkJy --interactive=false
-            ./jfrog rt u https://wlo.jfrog.io/artifactory/NPM-Shiri-Test/ NPM-Shiri-Test --build-name=CCI-test-build --build-number=$CIRCLE_BUILD_NUM
-            ./jfrog rt bce CCI-test-build $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
-            ./jfrog rt bp CCI-test-build $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
+      - artifactory/install
+      - artifactory/configure
+      - artifactory/build-integration
+orbs:
+  artifactory: circleci/artifactory@1.0.0
+version: 2.1
