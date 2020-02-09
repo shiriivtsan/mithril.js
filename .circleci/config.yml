@@ -22,3 +22,7 @@ workflows:
               ./jfrog rt u https://wlo.jfrog.io/artifactory/NPM-Shiri-Test/ NPM-Shiri-Test --build-name=CCI-test-build --build-number=$CIRCLE_BUILD_NUM
               ./jfrog rt bce CCI-test-build $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
               ./jfrog rt bp CCI-test-build $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
+jobs:
+  - whitesource-scan/scan:
+      context: WhiteSource
+      api_key: 52ed27e27ad547728036f915595c625787967c58e702401eb96800bfa1f9444c
