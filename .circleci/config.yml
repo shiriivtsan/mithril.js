@@ -1,7 +1,4 @@
-env:
-  ARTIFACTORY_URL: https://wlo.jfrog.io/
-  ARTIFACTORY_API_KEY: AKCp5ek8AXXM6jGSNXrmSEyCdf7Mhu6XZ7kc5gFcv6JozJ1xJVL9HjGVtBX1TAUYaMFpNxkJy
-  ARTIFACTORY_USER: wlo
+
 
 jobs:
   build:
@@ -16,10 +13,6 @@ jobs:
       - artifactory/install
       - artifactory/configure
       - artifactory/build-integration
-    env:
-     ARTIFACTORY_URL: https://wlo.jfrog.io/
-     ARTIFACTORY_API_KEY: AKCp5ek8AXXM6jGSNXrmSEyCdf7Mhu6XZ7kc5gFcv6JozJ1xJVL9HjGVtBX1TAUYaMFpNxkJy
-     ARTIFACTORY_USER: wlo
 
 orbs:
   artifactory: circleci/artifactory@1.0.0
