@@ -1,16 +1,13 @@
-
-
 jobs:
   build:
     docker:
       - image: 'circleci/node:10'
-
     steps:
       - checkout
       - artifactory/install
       - artifactory/configure
       - artifactory/build-integration
-     env:
+     environment:
        ARTIFACTORY_URL: https://wlo.jfrog.io/
        ARTIFACTORY_API_KEY: AKCp5ek8AXXM6jGSNXrmSEyCdf7Mhu6XZ7kc5gFcv6JozJ1xJVL9HjGVtBX1TAUYaMFpNxkJy
        ARTIFACTORY_USER: wlo
