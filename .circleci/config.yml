@@ -8,7 +8,7 @@ jobs:
       - artifactory/configure
       - artifactory/build-integration
     environment:
-       ARTIFACTORY_URL: "http://http://63.33.198.168/artifactory"
+       ARTIFACTORY_URL: "http://63.33.198.168/artifactory"
        ARTIFACTORY_API_KEY: "AKCp5ek8GvgJKyTexSgnyA38HqjV3UKVoaykthEuVuSSXqwaggKraNA2YX2vePr784YMYbiBN"
        ARTIFACTORY_USER: "wlo"
 
